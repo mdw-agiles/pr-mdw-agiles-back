@@ -1,0 +1,27 @@
+language: java
+jdk:
+- oraclejdk8
+branches:
+  only:
+  - develop
+  - /^release-[0-999].[0-999]$/
+  - master
+notifications:
+  email:
+    recipients:
+    - tomini18@hotmail.com
+services:
+  - mongodb
+script:
+#Test unitario y de integracion en perfil DEV, con cobertura
+- mvn org.jacoco:jacoco-maven-plugin:prepare-agent verify
+
+# SONAR
+
+# Deploy https://pr-mdw-agiles-back.herokuapp.com/
+deploy:
+  provider: heroku
+  api_key:
+    secure: $HEROKU
+  on:
+    branch: master
