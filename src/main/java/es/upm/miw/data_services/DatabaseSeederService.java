@@ -23,12 +23,7 @@ public class DatabaseSeederService {
     private static final String VARIOUS_CODE = "1";
 
     private static final String VARIOUS_NAME = "Varios";
-    @Autowired
-    public TicketRepository ticketRepository;
-    @Autowired
-    public InvoiceRepository invoiceRepository;
-    @Autowired
-    public CashierClosureRepository cashierClosureRepository;
+
     @Autowired
     private Environment environment;
 
@@ -44,24 +39,6 @@ public class DatabaseSeederService {
 
     @Autowired
     private UserRepository userRepository;
-    @Autowired
-    private VoucherRepository voucherRepository;
-    @Autowired
-    private ProviderRepository providerRepository;
-    @Autowired
-    private ArticleRepository articleRepository;
-    @Autowired
-    private BudgetRepository budgetRepository;
-    @Autowired
-    private ArticlesFamilyRepository articlesFamilyRepository;
-    @Autowired
-    private FamilyArticleRepository familyArticleRepository;
-    @Autowired
-    private FamilyCompositeRepository familyCompositeRepository;
-    @Autowired
-    private OrderRepository orderRepository;
-    @Autowired
-    private TagRepository tagRepository;
 
     @PostConstruct
     public void constructor() {
@@ -80,39 +57,12 @@ public class DatabaseSeederService {
             user.setRoles(new Role[]{Role.ADMIN});
             this.userRepository.save(user);
         }
-        CashierClosure cashierClosure = this.cashierClosureRepository.findFirstByOrderByOpeningDateDesc();
-        if (cashierClosure == null) {
-            LogManager.getLogger(this.getClass()).warn("------- Create cashierClosure -----------");
-            cashierClosure = new CashierClosure(BigDecimal.ZERO);
-            cashierClosure.close(BigDecimal.ZERO, BigDecimal.ZERO, "Initial");
-            this.cashierClosureRepository.save(cashierClosure);
-        }
-        if (!this.articleRepository.existsById(VARIOUS_CODE)) {
-            LogManager.getLogger(this.getClass()).warn("------- Create Article Various -----------");
-            Provider provider = new Provider(VARIOUS_NAME);
-            this.providerRepository.save(provider);
-            this.articleRepository.save(Article.builder(VARIOUS_CODE).reference(VARIOUS_NAME).description(VARIOUS_NAME)
-                    .retailPrice("100.00").stock(1000).provider(provider).build());
-        }
     }
 
     public void deleteAllAndInitialize() {
         LogManager.getLogger(this.getClass()).warn("------- Delete All -----------");
         // Delete Repositories -----------------------------------------------------
-        this.familyCompositeRepository.deleteAll();
-        this.invoiceRepository.deleteAll();
-
-        this.budgetRepository.deleteAll();
-        this.familyArticleRepository.deleteAll();
-        this.orderRepository.deleteAll();
-        this.tagRepository.deleteAll();
-        this.ticketRepository.deleteAll();
-        this.articleRepository.deleteAll();
-
-        this.cashierClosureRepository.deleteAll();
-        this.providerRepository.deleteAll();
         this.userRepository.deleteAll();
-        this.voucherRepository.deleteAll();
 
         // -------------------------------------------------------------------------
         this.initialize();
@@ -142,20 +92,7 @@ public class DatabaseSeederService {
         DatabaseGraph tpvGraph = yamlParser.load(input);
 
         // Save Repositories -----------------------------------------------------
-        this.providerRepository.saveAll(tpvGraph.getProviderList());
         this.userRepository.saveAll(tpvGraph.getUserList());
-        this.voucherRepository.saveAll(tpvGraph.getVoucherList());
-
-        this.articleRepository.saveAll(tpvGraph.getArticleList());
-
-        this.budgetRepository.saveAll(tpvGraph.getBudgetList());
-        this.familyArticleRepository.saveAll(tpvGraph.getFamilyArticleList());
-        this.orderRepository.saveAll(tpvGraph.getOrderList());
-        this.tagRepository.saveAll(tpvGraph.getTagList());
-        this.ticketRepository.saveAll(tpvGraph.getTicketList());
-
-        this.familyCompositeRepository.saveAll(tpvGraph.getFamilyCompositeList());
-        this.invoiceRepository.saveAll(tpvGraph.getInvoiceList());
         // -----------------------------------------------------------------------
 
         LogManager.getLogger(this.getClass()).warn("------- Seed...   " + "-----------");
