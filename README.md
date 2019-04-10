@@ -1,11 +1,11 @@
-# Proyecto TPV - Back-end - Spring
-#### Back-end con Tecnologías de Código Abierto (SPRING)
+# Proyecto MDW - Back-end - Spring
+#### Metodologías de Desarrollo Web (SPRING)
 #### [Máster en Ingeniería Web por la U.P.M.](http://miw.etsisi.upm.es)
-[![Build Status](https://travis-ci.org/miw-upm/betca-tpv-spring.svg?branch=develop)](https://travis-ci.org/miw-upm/betca-tpv-spring)
-![Quality Gate](https://sonarcloud.io/api/project_badges/measure?project=es.upm.miw%3Abetca-tpv-spring&metric=alert_status)
-> Proyecto Back-end completo para el uso de la tecnología Spring.  
-> Api en acción: [https://betca-tpv-spring.herokuapp.com/api/v0/swagger-ui.html](https://betca-tpv-spring.herokuapp.com/api/v0/swagger-ui.html).  
-> Web en acción: [https://betca-tpv-angular.herokuapp.com](https://betca-tpv-angular.herokuapp.com).  
+Master: [![Build Status](https://travis-ci.org/mdw-agiles/pr-mdw-agiles-back.svg?branch=master)](https://travis-ci.org/mdw-agiles)
+
+Develop: [![Build Status](https://travis-ci.org/mdw-agiles/pr-mdw-agiles-back.svg?branch=develop)](https://travis-ci.org/mdw-agiles)    
+
+> URL Heroku: [https://betca-tpv-angular.herokuapp.com](https://betca-tpv-angular.herokuapp.com).  
 > El Front-end se desarrolla en Angular en el proyecto [betca-tpv-angular](https://github.com/miw-upm/betca-tpv-angular).  
 > Ejecución en local:
 > * Se debe tener arrancado el motor de MongoDB: `mongodb://localhost:27017/tpv`  
@@ -25,22 +25,122 @@ Importar el proyecto mediante **IntelliJ IDEA**
 1. Marcar **Create Project from external model**, elegir **Maven**.
 1. **Next** … **Finish**.
 
-## Presentación
-Este proyecto es la práctica de Angular desarrollada de forma colaborativa por todos los alumnos.
-Se parte de la versión `core`, ya implementada, y se pretende ampliar con un conjunto de mejoras.  
-Un **T**erminal **P**unto de **V**enta es un sistema informático que gestiona el proceso de venta mediante una interfaz accesible para los vendedores o compradores.
-Un único sistema informático permite la creación e impresión del recibo ticket o factura de venta —con los detalles de las referencias y precios— de los artículos vendidos, actualiza los cambios en el nivel de existencias de mercancías (STOCK) en la base de datos...
+## Objetivos
+
+Con la realización de esta práctica se pretende alcanzar los siguientes objetivos:
+
+   * Poner en práctica los principios de las metodologías de desarrollo web incluidos en los contenidos de la asignatura.
+
+   * Fomentar el trabajo en equipo.
+
+   * Aprender a construir software basándose en un proceso de desarrollo ágil.
+
+   * Poner en práctica los principios de planificación y gestión de proyectos.
+
+
+## Enunciado de práctica
+
+Una empresa hotelera desea revolucionar el alquiler de habitaciones de
+hotel mediante la oferta de habitaciones por horas. Para ello, desea
+realizar una aplicación web para la gestión de la disponibilidad y de las
+reservas online de las habitaciones. Para alcanzar este objetivo, ha
+encomendado a los profesores de Metodologías de Desarrollo Web
+verificar el avance del proyecto e interactuar con los equipos de
+desarrollo de la ETSISI.
+
+La aplicación deseada permitirá a la empresa dar de alta diversas
+cadenas de hoteles. De cada cadena de hoteles, además de su
+responsable, se debe conocer el nombre de la misma y el logotipo. Cada
+cadena de hotel tendrá un responsable de cadena, que podrá
+administrar los hoteles pertenecientes a dicha cadena (darlos de alta,
+baja y modificarlos). Una cadena podrá tener uno o más hoteles que
+admitan reservas por horas.
+
+De cada hotel, se debe recoger el nombre del hotel, la dirección postal,
+el nombre y apellidos del director del hotel y una imagen representativa.
+Cada hotel tendrá un responsable de hotel, que será el encargado de
+gestionar las habitaciones de dicho hotel. El responsable de hotel será el
+encargado de dar de alta las habitaciones disponibles, en la modalidad
+de alquiler por horas. Para cada habitación, el sistema debe permitir
+establecer la disponibilidad de la misma por fecha y horario. El horario
+podrá variar según el día. El gestor de cada hotel, además de poder dar
+de alta habitaciones, debe poder eliminar y modificar los datos de las
+habitaciones bajo su supervisión.
+
+De cada habitación, se desea conocer el tipo de habitación: individual,
+doble, triple o suite. Además, se deben conocer los servicios adicionales
+de los que dispone la habitación: televisión, Internet, aire acondicionado,
+minibar, jacuzzi, etc. Para cada habitación, se establecerá además el
+precio por hora de la misma.
+
+Los clientes, deben poder buscar, a través de Internet, habitaciones por
+diferentes criterios: ubicación, nombre de hotel, fecha y franja horaria.
+Una vez localizado un hotel que disponga de habitaciones que encajen 
+Metodologías de desarrollo web – Práctica obligatoria – Curso 2016/2017
+3 en sus características deseadas, el sistema debe permitir al cliente realizar
+una reserva de la habitación indicando el número de horas que desea
+utilizar la misma.
+
+Al realizar la reserva, si el cliente ya tiene cuenta en la aplicación, el
+sistema dejará al cliente hacer login. En caso contrario, el sistema debe
+recoger los datos básicos del cliente, incluido su correo electrónico, con
+el que se creará una cuenta automáticamente para el cliente, quien
+podrá solicitar al sistema “recordar su contraseña”. Una vez que el cliente
+esté registrado en el sistema, se recogerán los datos relativos a la reserva,
+se calculará el precio de la misma (precio de la habitación por hora
+multiplicado por el número de horas reservadas) y se conducirá al cliente
+a una pasarela de pago por tarjeta de débito/crédito.
+Los clientes deben poder acceder al sistema y modificar tanto sus datos
+personales como los datos relativos a sus reservas (cancelación o
+modificación de la misma). El sistema no almacenará datos de tarjetas
+bancarias.
+
+Cuando se realice la compra, el cliente recibirá una confirmación por
+pantalla, así como un correo electrónico de confirmación con un código
+de reserva. Adicionalmente, el responsable del hotel recibirá un correo
+indicando que se ha realizado una nueva reserva y los datos de la misma.
+La habitación debe quedar bloqueada durante esas horas de manera
+automática. Así mismo, será necesario dejar un margen adicional de dos
+horas después de que quede libre para poder limpiarla y prepararla para
+otra reserva.
+
+El gestor del hotel debe poder visualizar las reservas sobre todas sus
+habitaciones, y tener un mecanismo para cancelar una reserva
+determinada, por causa de fuerza mayor. Si esto sucede, el sistema debe
+permitir al gestor incluir un mensaje personalizado para el cliente, quien
+recibirá un correo electrónico indicando que la reserva se ha cancelado
+y dándole la opción de, a través de la aplicación, acceder a un bono
+para la realización de otra reserva equivalente, o bien recuperar su
+dinero.
+
+Cuando el cliente acude al hotel, el personal de recepción del hotel (no
+necesariamente el gestor) le solicita el código de reserva que el cliente
+recibió por correo electrónico. Con este código el personal de recepción
+puede confirmar que el cliente ha acudido al hotel, para posteriormente
+recibir la liquidación correspondiente, que se ha cobrado previamente el
+sistema.
 
 ## Ecosistema
-`Git` `GitHub` `Travis-CI` `Sonarclud` `Heroku` `mLab`
-> Se utilizará un flujo de trabajo ramificado (_**Git Workflow**_).
-> Una **historia** por **alumno**, organizada como un **proyecto** de tipo **Automated kanban**.
-> Cada **historia** se dividirá en **tareas**, cada **tarea** será una **issue#**, que será el nombre de la **rama**.  
-> **Se recomienda aportaciones frecuentes a la rama `develop`** :sweat_smile:
+`Git` `GitHub` `Travis-CI` `Sonarclud` `Heroku` `mLab` `SCRUM`
+
+### Tarea 1
+
+> * Formar un equipo de trabajo Scrum, con el número de integrantes indicados por el profesor.
+> * Escoger un Product Owner (PO) y un Scrum Máster (SM) de entre los integrantes del equipo.
+> * El PO será el encargado del Product Backlog, mientras que el SM será el encargado del Sprint Backlog.
+> * Redactar todas las historias de usuario derivadas del enunciado base.
+> * El PO debe reunirse con el cliente para aclarar todas aquellas dudas que tenga y extraer el valor de negocio de cada historia de usuario, de modo que pueda hacer una priorización adecuada.
+> * El equipo debe estimar el coste relativo (pequeño, mediano, grande) de realización de cada historia de usuario ya priorizada por valor de negocio.
+> * Una vez que las historias de usuario estén debidamente priorizadas, el equipo debe crear el primer Sprint Planning, dividiendo las historias de usuario en tareas y dándole a su vez un coste relativo a las tareas 1,2,4,8, seleccionando las historias que el equipo sea capaz de realizar en el primer sprint, considerando como medida de referencia 20 unidades de tiempo por miembro del equipo (excluyendo PO y SM).
+
+### Tarea 2
+
+> * Abordar el desarrollo del primer Sprint planificado empleando TDD
+> * Detallar la conversación y los criterios de aceptación de las historias consideradas
 
 ### Metodología de trabajo
 :one: Organización de la **historia** y **tareas** en el proyecto de GitHub mediante **notas**. Elegir la **nota** a implementar, convertirla en **issue#** y configurarla  
-:two: Mirar el estado del proyecto [![Build Status](https://travis-ci.org/miw-upm/betca-tpv-spring.svg?branch=develop)](https://travis-ci.org/miw-upm/betca-tpv-spring) en [Travis-CI](https://travis-ci.org/miw-upm/betca-tpv-spring/builds)  
+:two: Mirar el estado del proyecto [![Build Status](https://travis-ci.org/mdw-agiles/pr-mdw-agiles-back.svg?branch=develop)](https://travis-ci.org/mdw-agiles) en [Travis-CI](https://travis-ci.org/miw-upm/betca-tpv-spring/builds)  
 :three: Sincronizarse con las ramas remotas, 
 ```sh
 > git fetch --all
@@ -87,27 +187,6 @@ script:
 - mvn org.jacoco:jacoco-maven-plugin:prepare-agent verify  #Test en el perfil "dev" y con cobertura
 ```
 
-### Sonarcloud
-En el la cuenta de **Sonarcloud**, en la página `-> My Account -> Security`, se ha generado una **API Key**.   
-En la cuenta de **Travis-CI**, dentro del proyecto, en `-> More options -> Settings`, se ha creado una variable de entorno llamada `SONAR` cuyo contenido es la **API key** de **Sonar**.    
-Se ha incorporado al fichero de `.travis.yml` el siguiente código:
-```yml
-# Sonarcloud
-- mvn sonar:sonar -Dsonar.organization=miw-upm-github -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONAR
-```
-
-### Swagger
-Se monta un cliente swagger para atacar al API: http://localhost:8080/api/v0/swagger-ui.html.
-Para ello, se ha introducido una fichero de configuración [SwaggerConfig](https://github.com/miw-upm/betca-tpv-spring/blob/master/src/main/java/es/upm/miw/config/SwaggerConfig.java)
-```
-@Configuration @EnableSwagger2
-public class SwaggerConfig {
-    @Bean
-    public Docket api() {
-		...
-    }
-```
-
 ### Heroku & mLab
 Se realiza un despliegue en **Heroku** con bases de datos de MongoDB en **mLab**.  
 En la cuenta de **Heroku**, en la página `-> Account settings -> API Key`, se ha obtenido la `API KEY`.  
@@ -124,31 +203,6 @@ deploy:
 ```
 La conexión entre **Heroku** y **mLab** se realiza automáticamente al añadir el **Add-ons**.
 
-## Arquitectura
-![](https://github.com/miw-upm/betca-tpv-spring/blob/develop/docs/tpv-architecture.png)
-
-### Responsabilidades
-* `config` Clases de configuración de **Spring**.
-* `exceptions`tratamiento de errores, convierte las excepciones lanzadas en respuestas de error HTTP.
-* `rest_controllers` Clases que conforman el **API**.
-   * Define el path del recurso.
-   * Deben organizar la recepción de datos de la petición.
-   * Delega en los **dtos** la validación de campos.
-   * Delega en **exceptions** las respuestas de errores **HTTP**.
-   * Delega en los **bussines_controllers** la ejecución de la petición.
-* `bussines_controllers` Clases que procesan la petición.
-   * Desarrollan el proceso que conlleva la ejecución de la petición.
-   * Construye los **documents** a partir de los **dtos** de entrada.
-   * Delega en los **dtos** la construcción de los **dtos** de respuesta a partir de los **documents**.
-   * Delega en los **repositories** el acceso básico a las BD.
-   * Delega en los **data_services** procesos de acceso avanzado a las BD.
-   * Delega en los **business_services** procesos genéricos avanzados de la capa de negocio.
-* `busines_services` Clases de servicios de apoyo, como fachada de construcción de PDF, fachada de tratamiento de JWT, encriptación...
-* `data_services` Clases de servicios avanzados de BD.
-* `repositories` Clases de acceso a BD mediante el patrón DAO.
-   * Operaciones CRUD sobre BD.
-   * Consultas a BD.
-* `documents` Clases con los documentos persistentes en BD y utilidades.
 
 ## Autenticación
 Se plantean mediante **Basic Auth** para logearse y obtener un **API Key** o **token** de tipo **JSON Web Tokens (JWT)**. Uso del **Bearer APIkEY** para el acceso a los recursos.  
@@ -163,31 +217,24 @@ Para asegurar los recursos, se plantea una filosofía distribuida, es decir, se 
 public class Clazz {
     //...
     @PreAuthorize("hasRole('ADMIN')")
-    public void method(){...}
+    public void method(){}
     //...
-    public void method2(){...}
+    public void method2(){}
 }
 ```
 Existe un rol especial que se obtiene cuando se envía el usuario y contraseña por **Basic Auth** y es el rol de **authenticated**, sólo se utiliza para logearse.
 
-![](https://github.com/miw-upm/betca-tpv-spring/blob/develop/docs/authentication.png)
+![](https://github.com/mdw-agiles/pr-mdw-agiles-back/blob/master/docs/authentication.png)
 
 ## Tratamiento de errores
 Se realiza un tratamiento de error centralizado.  
-![](https://github.com/miw-upm/betca-tpv-spring/blob/develop/docs/exceptions.png)
-
-## API. Descripción genérica
-[Heroku deploy](https://betca-tpv-spring.herokuapp.com/api/v0/swagger-ui.html)
-
-![](https://github.com/miw-upm/betca-tpv-spring/blob/develop/docs/api.png)
+![](https://github.com/mdw-agiles/pr-mdw-agiles-back/blob/master/docs/exceptions.png)
 
 ## DTOs
 Son los objetos de transferencia del API, para recibir los datos (input) y enviar las respuestas (output).
 
 * Los **input** se encargan de las validaciones de entrada mediante las anotaciones.  
 * Los **output**. Se deben poder construir a partir de los **documentos**. Añadir la anotación `@JsonInclude(Include.NON_NULL)` para que no se devuelvan null en el Json.
-
-![](https://github.com/miw-upm/betca-tpv-spring/blob/develop/docs/dtos.png)   
 
 ## Bases de datos
 > Se dispone de un servicio para poblar la BD a partir de un fichero YML `db.yml`; se carga automáticamente al iniciar la aplicación en el perfil **dev**.  
@@ -202,58 +249,30 @@ Los pasos a seguir para incluir un nuevo documento en la carga de datos a travé
 1. Incluir en la clase `TpvGraph`, la **lista** del nuevo documento con **getters & setters**.  
 1. Incluir en la clase `DatabaseSeederService`, en el médoto `seedDatabase`, el `saveAll` del repositorio del nuevo documento.
 
-![](https://github.com/miw-upm/betca-tpv-spring/blob/develop/docs/database-seeder.png)
-
-Fichero ** \*.yml** como ejemplo...
+Fichero ** \*.yml** 
 ```yaml
-articleList:
-  - &ar1
-    code: 8400000000017
-    reference: ref-a1
-    description: descrip-a1
-    retailPrice: 20
-    stock: 10
-    tax: GENERAL
-    discontinued: false
-    provider: *pr1
-#...
-
-tagList:
-  - description: tag-1
-    articleList:
-      - *ar1
-      - *ar2
-      - *ar3
-  - description: tag-2
-    articleList:
-      - *ar1
-      - *ar2
-      - *ar5
+userList:
+  - &us0
+    mobile: 666666000
+    username: u000
+    password: p000
+    email: u000@gmail.com
+    dni: null
+    address: C/ TPV, 0, 1A, 28000 Madrid
+    roles:
+      - ADMIN
+      - MANAGER
+      - OPERATOR
+  - mobile: 666666001
+    username: u001
+    password: p001
+    email: u001@gmail.com
+    dni: 66666600L
+    address: C/ TPV, 1, 1A, 28000 Madrid
+    roles:
+      - MANAGER
 ```
 
-## Persistencia del TPV
-![](https://github.com/miw-upm/betca-tpv-spring/blob/develop/docs/documents.png)
-![](https://github.com/miw-upm/betca-tpv-spring/blob/develop/docs/repositories.png)
-
-## Generación de Pdf's
-![](https://github.com/miw-upm/betca-tpv-spring/blob/develop/docs/pdf.png)
-
-## Perfiles
-![](https://github.com/miw-upm/betca-tpv-spring/blob/develop/docs/profiles.png)  
-Si una propiedad se define en diferentes ficheros, predomina la definición mas específica.  
-A cualquier clase se le puede poner la anotación `@Profile()`, con ello indicamos que sólo se configura en el perfil marcado.  
-En el TPV, los **test** siempre se ejecutan en el perfil `dev`, y los `ApiLog` también el el perfil `dev`.  
-Por defecto el perfil es `dev`, pero se puede indicar como una propiedad en **application.properties**: `spring.profiles.active=dev`.  
-Sólamente en la rama `release-xx` cambiaremos este valor a `prod`
-Para ejecutar en un perfil determinado localmente:
-```sh
-> mvn spring-boot:run
-> mvn -Dspring.profiles.active=dev spring-boot:run
-
-> mvn -Dspring.profiles.active=prod spring-boot:run
-> java –jar –Dspring.profiles.active=prod release-1.0.0.jar 
-
-``` 
 
 # Metodología de trabajo
 
@@ -276,9 +295,9 @@ Para ejecutar en un perfil determinado localmente:
    * Debemos visualizar las ventanas, indicando desde que otras ventanas iniciamos la acción o desde que menú. Cualquier editor es válido, incluso en papel y subiendo la foto, aquí se ha utilizado el editor de Dibujos de Google. Es una vista aproximada.
    * En este punto ya podemos tener, mas o menos cerrado, el alcance de la práctica a realizar.  
    
-### Realizar el envio de la práctica en la plataforma de Moddle: [Miw-Spring-ECP](https://moodle.upm.es/titulaciones/oficiales/mod/assign/view.php?id=952015)   
-> Se debe obtener la calificación de `YES` para continuar la siguiente Fase   
----
+### Realizar el envio de la práctica en la plataforma de Moddle   
+
+Una vez terminada la práctica, se subirá el código y la documentación a la plataforma moodle.
 
 ## Fase 4. Gestionar el desarrollo  
 1. Dividir la práctica en tareas mas pequeñas, cada tarea una **Nota**. Cuando se vaya a implementar la nota,
