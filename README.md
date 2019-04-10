@@ -282,8 +282,8 @@ userList:
 > Para `Web Storm`, todo el código debe estar formateado mediante: `-> Code -> Reformat Code`, con los chekbox `[x]Optimize imports`, `[x]Rearrange entries` y `Cleanup code` activados.  
 
 ## Fase 2. Importar los proyectos
-* BACK-END (IntelliJ): https://github.com/miw-upm/betca-tpv-spring.
-* FROND-END (Web Storm): https://github.com/miw-upm/betca-tpv-angular.
+* BACK-END (IntelliJ): https://github.com/mdw-agiles/pr-mdw-agiles-back.
+* FROND-END (Web Storm): https://github.com/mdw-agiles/pr-mdw-agiles-front.
 
 ## Fase 3. Determinar y limitar el alcance de la práctica  
 1. Determinar el enunciado
