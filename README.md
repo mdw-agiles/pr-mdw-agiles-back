@@ -5,8 +5,8 @@ Master: [![Build Status](https://travis-ci.org/mdw-agiles/pr-mdw-agiles-back.svg
 
 Develop: [![Build Status](https://travis-ci.org/mdw-agiles/pr-mdw-agiles-back.svg?branch=develop)](https://travis-ci.org/mdw-agiles)    
 
-> URL Heroku: [https://betca-tpv-angular.herokuapp.com](https://betca-tpv-angular.herokuapp.com).  
-> El Front-end se desarrolla en Angular en el proyecto [betca-tpv-angular](https://github.com/miw-upm/betca-tpv-angular).  
+> URL Heroku: [https://pr-mdw-agiles-front.herokuapp.com](https://pr-mdw-agiles-front.herokuapp.com).  
+> El Front-end se desarrolla en Angular en el proyecto [pr-mdw-agiles-front](https://github.com/mdw-agiles/pr-mdw-agiles-front).  
 > Ejecución en local:
 > * Se debe tener arrancado el motor de MongoDB: `mongodb://localhost:27017/tpv`  
 > * Ejecutar el **API** en linea de comando, mediante: `> mvn clean spring-boot:run`  
@@ -18,7 +18,7 @@ Develop: [![Build Status](https://travis-ci.org/mdw-agiles/pr-mdw-agiles-back.sv
  Clonar el repositorio en tu equipo, **mediante consola**:
 ```sh
 > cd <folder path>
-> git clone https://github.com/miw-upm/betca-tpv-spring
+> git clone https://github.com/mdw-agiles/pr-mdw-agiles-back
 ```
 Importar el proyecto mediante **IntelliJ IDEA**
 1. **Import Project**, y seleccionar la carpeta del proyecto.
@@ -140,7 +140,7 @@ sistema.
 
 ### Metodología de trabajo
 :one: Organización de la **historia** y **tareas** en el proyecto de GitHub mediante **notas**. Elegir la **nota** a implementar, convertirla en **issue#** y configurarla  
-:two: Mirar el estado del proyecto [![Build Status](https://travis-ci.org/mdw-agiles/pr-mdw-agiles-back.svg?branch=develop)](https://travis-ci.org/mdw-agiles) en [Travis-CI](https://travis-ci.org/miw-upm/betca-tpv-spring/builds)  
+:two: Mirar el estado del proyecto [![Build Status](https://travis-ci.org/mdw-agiles/pr-mdw-agiles-back.svg?branch=develop)](https://travis-ci.org/mdw-agiles) en [Travis-CI](https://travis-ci.org/mdw-agiles/pr-mdw-agiles-back.svg?branch=develop)  
 :three: Sincronizarse con las ramas remotas, 
 ```sh
 > git fetch --all
@@ -193,7 +193,6 @@ En la cuenta de **Heroku**, en la página `-> Account settings -> API Key`, se h
 En la cuenta de **Travis-CI**, dentro del proyecto, en `-> More options -> Settings`, se ha creado una variable de entorno llamada `HEROKU` cuyo contenido es la **API key** de **Heroku**.  
 Se incorpora el siguiente código en el fichero `.travis.yml`
 ```yaml
-# Deploy https://betca-tpv-spring.herokuapp.com/api/v0/swagger-ui.html
 deploy:
   provider: heroku
   api_key:
@@ -323,13 +322,3 @@ Como ejemplo proponemos la siguiente división:
 * Realizar aportaciones frecuentes a la rama **develop**, del código estable, aunque este a medias. **Ojo** con los ficheros muy susceptibles de colisionar, como por ejemplo **app.module.ts**, **app-routing.module.ts**, **home.component.ts**..., en este caso, modificarlos y subirlos a **develop** con rapidez.
 * Vigilar y pensar bien los **comentarios de los commits**, acordarse de añadir la referencia del issue: **#xx**.
 * Cuando se termina un **issue#xx**, añadir el **tiempo real** utilizado y cerrarlo.
-
-
-
-
-
-
-
-
-
-
