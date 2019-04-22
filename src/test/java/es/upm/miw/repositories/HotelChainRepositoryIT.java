@@ -22,14 +22,14 @@ public class HotelChainRepositoryIT {
 
     @BeforeEach
     void seedDB() {
-        this.hotelChain = new HotelChain("NH Hoteles");
+        this.hotelChain = new HotelChain("MIW Test Hotels");
         this.hotelChainRepository.save(hotelChain);
     }
 
     @Test
     void testFindByName() {
-        HotelChain hotelChainDb = hotelChainRepository.findByName("NH Hoteles").get();
-        assertEquals("NH Hoteles", hotelChainDb.getName());
+        HotelChain hotelChainDb = hotelChainRepository.findByName("MIW Test Hotels").get();
+        assertEquals("MIW Test Hotels", hotelChainDb.getName());
     }
 
     @Test

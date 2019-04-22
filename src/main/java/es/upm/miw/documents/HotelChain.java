@@ -14,7 +14,12 @@ public class HotelChain {
     @Indexed(unique = true)
     private String name;
 
+    public HotelChain(){
+        // Empty for framework
+    }
+
     public HotelChain(String name) {
+        this();
         this.name = name;
     }
 
