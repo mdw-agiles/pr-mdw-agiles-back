@@ -55,7 +55,6 @@ userList:
     address: C/ TPV, 5, 1A, 28000 Madrid
     roles:
       - CUSTOMER
-
 # HotelChain
 hotelChainList:
   - &hc0
