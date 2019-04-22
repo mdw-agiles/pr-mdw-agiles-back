@@ -39,6 +39,8 @@ public class DatabaseSeederService {
 
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private HotelChainRepository hotelChainRepository;
 
     @PostConstruct
     public void constructor() {
@@ -63,6 +65,7 @@ public class DatabaseSeederService {
         LogManager.getLogger(this.getClass()).warn("------- Delete All -----------");
         // Delete Repositories -----------------------------------------------------
         this.userRepository.deleteAll();
+        this.hotelChainRepository.deleteAll();
 
         // -------------------------------------------------------------------------
         this.initialize();
@@ -93,6 +96,7 @@ public class DatabaseSeederService {
 
         // Save Repositories -----------------------------------------------------
         this.userRepository.saveAll(tpvGraph.getUserList());
+        this.hotelChainRepository.saveAll(tpvGraph.getHotelChainList());
         // -----------------------------------------------------------------------
 
         LogManager.getLogger(this.getClass()).warn("------- Seed...   " + "-----------");

@@ -55,3 +55,16 @@ userList:
     address: C/ TPV, 5, 1A, 28000 Madrid
     roles:
       - CUSTOMER
+
+# HotelChain
+hotelChainList:
+  - &hc0
+    name: "NH Hoteles"
+  - &hc1
+    name: "Barceló Hotel Group"
+  - &hc2
+    name: "Meliá Hotels"
+  - &hc3
+    name: "AC Hotels"
+
+
