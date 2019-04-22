@@ -2,6 +2,7 @@ package es.upm.miw.repositories;
 
 import es.upm.miw.TestConfig;
 import es.upm.miw.documents.HotelChain;
+import es.upm.miw.dtos.HotelChainDto;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -9,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 @TestConfig
@@ -27,14 +27,8 @@ public class HotelChainRepositoryIT {
     }
 
     @Test
-    void testFindByName() {
-        HotelChain hotelChainDb = hotelChainRepository.findByName("MIW Test Hotels").get();
-        assertEquals("MIW Test Hotels", hotelChainDb.getName());
-    }
-
-    @Test
     void testFindAllHotelChains() {
-        List<HotelChain> hotelChains = hotelChainRepository.findAllHotelChains();
+        List<HotelChainDto> hotelChains = hotelChainRepository.findAllHotelChains();
         assertNotNull(hotelChains);
     }
 
