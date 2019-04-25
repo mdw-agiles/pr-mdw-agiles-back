@@ -1,5 +1,7 @@
 package es.upm.miw.dtos;
 
+import es.upm.miw.documents.Hotel;
+
 import javax.validation.constraints.NotNull;
 
 public class HotelDto {
@@ -12,6 +14,11 @@ public class HotelDto {
 
     public HotelDto() {
         // Empty from framework
+    }
+
+    public HotelDto(Hotel hotel) {
+        this.name = hotel.getName();
+        this.hotelChainId = hotel.getHotelChain().getId();
     }
 
     public String getName() {

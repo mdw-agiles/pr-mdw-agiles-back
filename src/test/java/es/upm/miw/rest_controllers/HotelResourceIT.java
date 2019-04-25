@@ -1,6 +1,5 @@
 package es.upm.miw.rest_controllers;
 
-import es.upm.miw.dtos.HotelChainDto;
 import es.upm.miw.dtos.HotelDto;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,11 +16,23 @@ public class HotelResourceIT {
     private RestService restService;
 
     @Test
-    void testReadAll(){
+    void testReadAll() {
         List<HotelDto> hotelDtoList = Arrays.asList(this.restService.loginAdmin()
                 .restBuilder(new RestBuilder<HotelDto[]>()).clazz(HotelDto[].class)
                 .path(HotelResource.HOTELS)
                 .get().build());
-        assertTrue( hotelDtoList.isEmpty());
+        assertTrue(hotelDtoList.isEmpty());
     }
+
+    @Test
+    void testQueryByHotelChain() {
+        List<HotelDto> hotelDtoList = Arrays.asList(this.restService.loginAdmin()
+                .restBuilder(new RestBuilder<HotelDto[]>()).clazz(HotelDto[].class)
+                .path(HotelResource.HOTELS).path(HotelResource.SEARCH)
+                .param("hotelChainId", "&hc0")
+                .get().build());
+        assertTrue(hotelDtoList.isEmpty());
+    }
+
+
 }
