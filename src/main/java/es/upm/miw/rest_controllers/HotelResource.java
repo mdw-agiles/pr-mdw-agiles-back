@@ -21,7 +21,8 @@ public class HotelResource {
     public List<HotelDto> readAll() { return this.hotelController.readAll(); }
 
     @GetMapping(value = SEARCH)
-    public List<HotelDto> searchByHotelChainId(@RequestParam(required = false) String id) {
-        return this.hotelController.readAllByHotelChainId(id);
+    public List<HotelDto> searchByHotelChain(@RequestParam(required = false) String hotelChain) {
+        return this.hotelController.readAllByHotelChain(hotelChain);
     }
+
 }

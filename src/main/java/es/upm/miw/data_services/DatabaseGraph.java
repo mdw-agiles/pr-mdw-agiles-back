@@ -9,9 +9,12 @@ public class DatabaseGraph {
     private List<User> userList;
     private List<HotelChain> hotelChainList;
 
+    private List<Hotel> hotelList;
+
     public DatabaseGraph() {
         this.userList = new ArrayList<>();
         this.hotelChainList = new ArrayList<>();
+        this.hotelList = new ArrayList<>();
     }
 
     public List<User> getUserList() {
@@ -28,5 +31,13 @@ public class DatabaseGraph {
 
     public void setHotelChainList(List<HotelChain> hotelChainList) {
         this.hotelChainList = hotelChainList;
+    }
+
+    public List<Hotel> getHotelList() {
+        return hotelList;
+    }
+
+    public void setHotelList(List<Hotel> hotelList) {
+        this.hotelList = hotelList;
     }
 }

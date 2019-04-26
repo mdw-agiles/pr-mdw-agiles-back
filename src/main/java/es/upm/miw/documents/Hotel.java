@@ -19,6 +19,10 @@ public class Hotel {
     @DBRef
     private HotelChain hotelChain;
 
+    public Hotel() {
+        // Empty for framework
+    }
+
     public Hotel(@NotNull String name, HotelChain hotelChain) {
         this.name = name;
         this.hotelChain = hotelChain;
