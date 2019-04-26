@@ -57,13 +57,21 @@ userList:
       - CUSTOMER
 # HotelChain
 hotelChainList:
-  - &hc0
-    name: "NH Hoteles"
-  - &hc1
-    name: "Barceló Hotel Group"
-  - &hc2
-    name: "Meliá Hotels"
-  - &hc3
-    name: "AC Hotels"
-
-
+  - &hc-5cbc210bc2e17403fb397c27
+    name: NH Hoteles
+  - &hc-5cbc2d6ec2e17403fb397c7d
+    name: Grupo Meliá
+# Hotel
+hotelList:
+  - &h-5cbc2a3fc2e17403fb397c5b
+    name: NH Madrid Centro
+    hotelChain: *hc-5cbc210bc2e17403fb397c27
+  - &h-5cbc2d9fc2e17403fb397c81
+    name: NH Alcobendas
+    hotelChain: *hc-5cbc210bc2e17403fb397c27
+  - &h-5cbc2dafc2e17403fb397c85
+    name: NH Alcalá de Henares
+    hotelChain: *hc-5cbc210bc2e17403fb397c27
+  - &h-5cbc2dd5c2e17403fb397c89
+    name: Meliá Málaga
+    hotelChain: *hc-5cbc2d6ec2e17403fb397c7d
