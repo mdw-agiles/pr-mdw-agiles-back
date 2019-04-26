@@ -36,8 +36,4 @@ public class HotelController {
             return Collections.emptyList();
         }
     }
-
-    public List<HotelDto> readAllByName(String name) {
-        return HotelDto.getListHotelDto(this.hotelRepository.findByName(name));
-    }
 }
