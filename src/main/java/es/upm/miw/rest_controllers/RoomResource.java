@@ -25,7 +25,7 @@ public class RoomResource {
     public List<RoomDto> readAll() { return this.roomController.readAll(); }
 
     @GetMapping(value = SEARCH)
-    public List<RoomDto> searchByHotel(@RequestParam() String hotel) {
-        return new ArrayList<>();
+    public List<RoomDto> searchByHotel(@RequestParam() String hotelName) {
+        return this.roomController.searchByHotel(hotelName);
     }
 }
