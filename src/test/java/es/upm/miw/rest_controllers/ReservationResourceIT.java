@@ -24,4 +24,9 @@ public class ReservationResourceIT {
                 .get().build());
         assertFalse( reservationDtoList.isEmpty());
     }
+
+    @Test
+    void testSearchByHotel() {
+        assertFalse(false);
+    }
 }
