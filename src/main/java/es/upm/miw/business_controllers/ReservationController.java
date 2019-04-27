@@ -6,7 +6,6 @@ import es.upm.miw.repositories.ReservationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -17,6 +16,11 @@ public class ReservationController {
 
     public List<ReservationDto> readAll() {
         List<Reservation> reservationList = this.reservationRepository.findAll();
-        return ReservationDto.getListRoomDto(reservationList);
+        return ReservationDto.getListReservationDto(reservationList);
+    }
+
+    public List<ReservationDto> searchByCode(String code) {
+        List<Reservation> reservations = this.reservationRepository.findAllByCode(code);
+        return ReservationDto.getListReservationDto(reservations);
     }
 }

@@ -91,9 +91,9 @@ public class ReservationDto {
         return Objects.hash(code, hotel.getId());
     }
 
-    public static List<ReservationDto> getListRoomDto(List<Reservation> roomList){
+    public static List<ReservationDto> getListReservationDto(List<Reservation> reservationList){
         List<ReservationDto> reservationDtoList = new ArrayList<>();
-        roomList.forEach(res -> reservationDtoList.add(new ReservationDto(res)));
+        reservationList.forEach(r -> reservationDtoList.add(new ReservationDto(r)));
         return reservationDtoList;
     }
 

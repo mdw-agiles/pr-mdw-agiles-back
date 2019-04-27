@@ -43,13 +43,8 @@ public class Reservation {
         this.hotel = hotel;
         this.room = room;
         this.duration = duration;
-        this.dateTime = this.convertStringToDate(dateTime);
+        this.dateTime = LocalDateTime.parse(dateTime);
     }
-
-    private LocalDateTime convertStringToDate(String date) {
-        return LocalDateTime.parse(date);
-    }
-
 
     public String getId() { return id; }
 
