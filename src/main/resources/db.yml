@@ -109,7 +109,3 @@ reservationList:
   duration: 1
   room: *r-5cbc2adec2e17403fb397c6b
   hotel: *h-5cbc2a3fc2e17403fb397c5b
-  
-
-
-
