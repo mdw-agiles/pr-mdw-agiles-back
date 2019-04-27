@@ -26,6 +26,11 @@ public class RoomResourceIT {
 
     @Test
     void testSearchByHotel() {
-        assertFalse(false);
+        List<RoomDto> roomDtoList = Arrays.asList(this.restService.loginAdmin()
+                .restBuilder(new RestBuilder<RoomDto[]>()).clazz(RoomDto[].class)
+                .path(RoomResource.ROOM).path(RoomResource.SEARCH)
+                .param("hotel", "Hotel Name")
+                .get().build());
+        assertTrue(roomDtoList.isEmpty());
     }
 }
