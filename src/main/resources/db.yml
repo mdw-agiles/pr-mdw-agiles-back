@@ -89,3 +89,17 @@ roomList:
     name: Normal 2 personas Desayuno
     price: 5.5
     hotel: *h-5cbc2a3fc2e17403fb397c5b
+# Reservation
+reservationList:
+  - &b-5cbc2b7bc2e17403fb397c73
+    code: 1a2b3c4d5e6f7g8h
+    cost: 5.0
+    hotel: *h-5cbc2a3fc2e17403fb397c5b
+    room: *r-5cbc2adec2e17403fb397c6b
+    duration: 2
+  - &b-5cbc2e95c2e17403fb397c8f
+    code: 8a7b6c5d4e3f2g1h
+    cost: 2.5
+    hotel: *h-5cbc2a3fc2e17403fb397c5b
+    room: *r-5cbc2adec2e17403fb397c6b
+    duration: 1
