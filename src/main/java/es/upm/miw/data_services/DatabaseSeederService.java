@@ -1,7 +1,11 @@
 package es.upm.miw.data_services;
 
-import es.upm.miw.documents.*;
-import es.upm.miw.repositories.*;
+import es.upm.miw.documents.Role;
+import es.upm.miw.documents.User;
+import es.upm.miw.repositories.HotelChainRepository;
+import es.upm.miw.repositories.HotelRepository;
+import es.upm.miw.repositories.RoomRepository;
+import es.upm.miw.repositories.UserRepository;
 import org.apache.logging.log4j.LogManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -42,6 +46,8 @@ public class DatabaseSeederService {
     private HotelChainRepository hotelChainRepository;
     @Autowired
     private HotelRepository hotelRepository;
+    @Autowired
+    private RoomRepository roomRepository;
 
     @PostConstruct
     public void constructor() {
@@ -68,6 +74,7 @@ public class DatabaseSeederService {
         this.userRepository.deleteAll();
         this.hotelRepository.deleteAll();
         this.hotelChainRepository.deleteAll();
+        this.roomRepository.deleteAll();
 
         // -------------------------------------------------------------------------
         this.initialize();
@@ -100,6 +107,7 @@ public class DatabaseSeederService {
         this.userRepository.saveAll(tpvGraph.getUserList());
         this.hotelChainRepository.saveAll(tpvGraph.getHotelChainList());
         this.hotelRepository.saveAll(tpvGraph.getHotelList());
+        this.roomRepository.saveAll(tpvGraph.getRoomList());
         // -----------------------------------------------------------------------
 
         LogManager.getLogger(this.getClass()).warn("------- Seed...   " + "-----------");
