@@ -21,7 +21,6 @@ public class RoomResourceIT {
                 .restBuilder(new RestBuilder<RoomDto[]>()).clazz(RoomDto[].class)
                 .path(RoomResource.ROOM)
                 .get().build());
-        assertTrue( roomDtoList.isEmpty());
+        assertFalse( roomDtoList.isEmpty());
     }
-
 }

@@ -5,6 +5,8 @@ import es.upm.miw.documents.Room;
 
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class RoomDto {
@@ -18,10 +20,14 @@ public class RoomDto {
     @NotNull
     private Hotel hotel;
 
-    public RoomDto(@NotNull String name, BigDecimal price, Hotel hotel) {
-        this.name = name;
-        this.price = price;
-        this.hotel = hotel;
+    public RoomDto() {
+        // Empty from framework
+    }
+
+    public RoomDto(Room room) {
+        this.name = room.getName();
+        this.price = room.getPrice();
+        this.hotel = room.getHotel();
     }
 
     public String getName() {
@@ -59,6 +65,12 @@ public class RoomDto {
     @Override
     public int hashCode() {
         return Objects.hash(name, hotel.getId());
+    }
+
+    public static List<RoomDto> getListRoomDto(List<Room> roomList){
+        List<RoomDto> roomDtoList = new ArrayList<>();
+        roomList.forEach(room -> roomDtoList.add(new RoomDto(room)));
+        return roomDtoList;
     }
 
     @Override
