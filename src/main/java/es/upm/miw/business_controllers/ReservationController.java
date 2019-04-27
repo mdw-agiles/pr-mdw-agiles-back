@@ -1,5 +1,6 @@
 package es.upm.miw.business_controllers;
 
+import es.upm.miw.documents.Reservation;
 import es.upm.miw.dtos.ReservationDto;
 import es.upm.miw.repositories.ReservationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,7 @@ public class ReservationController {
     private ReservationRepository reservationRepository;
 
     public List<ReservationDto> readAll() {
-        return new ArrayList<>();
+        List<Reservation> reservationList = this.reservationRepository.findAll();
+        return ReservationDto.getListRoomDto(reservationList);
     }
 }

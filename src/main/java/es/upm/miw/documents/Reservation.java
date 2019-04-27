@@ -25,23 +25,31 @@ public class Reservation {
     @DBRef
     private Hotel hotel;
 
+    @DBRef
+    private Room room;
+
     @NotNull
     private BigDecimal duration;
 
-    @NotNull
-    private Date dateTime;
+    private LocalDateTime dateTime;
 
     public Reservation() {
         // Empty for framework
     }
 
-    public Reservation(@NotNull String code, BigDecimal cost, Hotel hotel, BigDecimal duration, Date dateTime) {
+    public Reservation(@NotNull String code, BigDecimal cost, Hotel hotel, Room room, BigDecimal duration, String dateTime) {
         this.code = code;
         this.cost = cost;
         this.hotel = hotel;
+        this.room = room;
         this.duration = duration;
-        this.dateTime = dateTime;
+        this.dateTime = this.convertStringToDate(dateTime);
     }
+
+    private LocalDateTime convertStringToDate(String date) {
+        return LocalDateTime.parse(date);
+    }
+
 
     public String getId() { return id; }
 
@@ -59,13 +67,17 @@ public class Reservation {
 
     public void setHotel(Hotel hotel) { this.hotel = hotel; }
 
+    public Room getRoom() { return room; }
+
+    public void setRoom(Room room) { this.room = room; }
+
     public BigDecimal getDuration() { return duration; }
 
     public void setDuration(BigDecimal duration) { this.duration = duration; }
 
-    public Date getDateTime() { return dateTime; }
+    public LocalDateTime getDateTime() { return dateTime; }
 
-    public void setDateTime(Date dateTime) { this.dateTime = dateTime; }
+    public void setDateTime(LocalDateTime dateTime) { this.dateTime = dateTime; }
 
     @Override
     public boolean equals(Object o) {

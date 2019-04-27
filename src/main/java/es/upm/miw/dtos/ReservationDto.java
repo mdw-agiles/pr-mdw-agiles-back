@@ -2,6 +2,7 @@ package es.upm.miw.dtos;
 
 import es.upm.miw.documents.Hotel;
 import es.upm.miw.documents.Reservation;
+import es.upm.miw.documents.Room;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -29,11 +30,13 @@ public class ReservationDto {
     @DBRef
     private Hotel hotel;
 
+    @DBRef
+    private Room room;
+
     @NotNull
     private BigDecimal duration;
 
-    @NotNull
-    private Date dateTime;
+    private LocalDateTime dateTime;
 
     public ReservationDto() {
         // Empty for framework
@@ -63,13 +66,17 @@ public class ReservationDto {
 
     public void setHotel(Hotel hotel) { this.hotel = hotel; }
 
+    public Room getRoom() { return room; }
+
+    public void setRoom(Room room) { this.room = room; }
+
     public BigDecimal getDuration() { return duration; }
 
     public void setDuration(BigDecimal duration) { this.duration = duration; }
 
-    public Date getDateTime() { return dateTime; }
+    public LocalDateTime getDateTime() { return dateTime; }
 
-    public void setDateTime(Date dateTime) { this.dateTime = dateTime; }
+    public void setDateTime(LocalDateTime dateTime) { this.dateTime = dateTime; }
 
     @Override
     public boolean equals(Object o) {

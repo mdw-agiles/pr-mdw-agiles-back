@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -21,6 +22,6 @@ public class ReservationResourceIT {
                 .restBuilder(new RestBuilder<ReservationDto[]>()).clazz(ReservationDto[].class)
                 .path(ReservationResource.RESERVATION)
                 .get().build());
-        assertTrue( reservationDtoList.isEmpty());
+        assertFalse( reservationDtoList.isEmpty());
     }
 }
