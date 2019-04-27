@@ -1,9 +1,13 @@
 package es.upm.miw.rest_controllers;
 
+import es.upm.miw.dtos.RoomDto;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import java.util.Arrays;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 @ApiTestConfig
 public class RoomResourceIT {
@@ -13,7 +17,11 @@ public class RoomResourceIT {
 
     @Test
     void testReadAll(){
-        assertTrue( false);
+        List<RoomDto> roomDtoList = Arrays.asList(this.restService.loginAdmin()
+                .restBuilder(new RestBuilder<RoomDto[]>()).clazz(RoomDto[].class)
+                .path(RoomResource.ROOM)
+                .get().build());
+        assertTrue( roomDtoList.isEmpty());
     }
 
 }
