@@ -5,9 +5,13 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.assertThat;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @ApiTestConfig
 public class RoomResourceIT {
@@ -16,12 +20,12 @@ public class RoomResourceIT {
     private RestService restService;
 
     @Test
-    void testReadAll(){
+    void testReadAll() {
         List<RoomDto> roomDtoList = Arrays.asList(this.restService.loginAdmin()
                 .restBuilder(new RestBuilder<RoomDto[]>()).clazz(RoomDto[].class)
                 .path(RoomResource.ROOM)
                 .get().build());
-        assertFalse( roomDtoList.isEmpty());
+        assertFalse(roomDtoList.isEmpty());
     }
 
     @Test
@@ -44,5 +48,17 @@ public class RoomResourceIT {
                 .param("hotelName", "NH Madrid Centro")
                 .get().build());
         assertFalse(roomDtoList.isEmpty());
+    }
+
+    @Test
+    void givenRoomAndDate_thenReturnBookedDates() {
+        List<Date> bookedDates = Arrays.asList(this.restService.loginAdmin()
+                .restBuilder(new RestBuilder<Date[]>()).clazz(Date[].class)
+                .path(RoomResource.ROOM).path(RoomResource.ROOM_BOOKED_DATES)
+                .expand("r-5cbc2adec2e17403fb397c6b")
+                .expand("2019-04-21")
+                .get().build());
+        assertFalse(bookedDates.isEmpty());
+        assertThat(bookedDates.size(), is(2));
     }
 }
