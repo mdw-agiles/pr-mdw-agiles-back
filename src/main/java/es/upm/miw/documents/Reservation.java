@@ -7,6 +7,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.Date;
 import java.util.Objects;
 
@@ -31,7 +32,7 @@ public class Reservation {
     @NotNull
     private BigDecimal duration;
 
-    private LocalDateTime dateTime;
+    private Date dateTime;
 
     public Reservation() {
         // Empty for framework
@@ -43,7 +44,7 @@ public class Reservation {
         this.hotel = hotel;
         this.room = room;
         this.duration = duration;
-        this.dateTime = LocalDateTime.parse(dateTime);
+        this.dateTime = Date.from(LocalDateTime.parse(dateTime).atZone(ZoneId.systemDefault()).toInstant());
     }
 
     public String getId() { return id; }
@@ -70,9 +71,9 @@ public class Reservation {
 
     public void setDuration(BigDecimal duration) { this.duration = duration; }
 
-    public LocalDateTime getDateTime() { return dateTime; }
+    public Date getDateTime() { return dateTime; }
 
-    public void setDateTime(LocalDateTime dateTime) { this.dateTime = dateTime; }
+    public void setDateTime(Date dateTime) { this.dateTime = dateTime; }
 
     @Override
     public boolean equals(Object o) {
