@@ -90,7 +90,7 @@ public class Reservation {
 
     @Override
     public String toString() {
-        return "Hotel{" +
+        return "Reservation{" +
                 "id='" + id + '\'' +
                 ", code='" + code + '\'' +
                 ", cost='" + cost + '\'' +
