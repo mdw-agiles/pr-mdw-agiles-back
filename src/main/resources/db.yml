@@ -122,7 +122,7 @@ reservationList:
     hotel: *h-5cbc2a3fc2e17403fb397c5b
     room: *r-5cbc2adec2e17403fb397c6b
     duration: 2
-    dateTime: 2019-04-21T10:00:00
+    dateTime: 2019-04-21T00:00:00+02:00
   - &b-5cbc2e95c2e17403fb397c8f
     id: 5cbc2e95c2e17403fb397c8f
     code: 8a7b6c5d4e3f2g1h
@@ -130,4 +130,4 @@ reservationList:
     hotel: *h-5cbc2a3fc2e17403fb397c5b
     room: *r-5cbc2adec2e17403fb397c6b
     duration: 1
-    dateTime: 2019-04-21T18:00:00
+    dateTime: 2019-04-21T23:00:00+02:00
