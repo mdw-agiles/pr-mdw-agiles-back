@@ -17,10 +17,10 @@ public class RoomResource {
     public static final String ROOM = "/rooms";
     public static final String SEARCH = "/search";
 
-    private static final String BOOKED_DATES = "/booked-dates";
+    private static final String BOOKED_DATE_TIMES = "/booked-date-times";
     private static final String ROOM_ID = "/{roomId}";
     private static final String DATE_ID = "/{date}";
-    public static final String ROOM_BOOKED_DATES = ROOM_ID + BOOKED_DATES + DATE_ID;
+    public static final String ROOM_BOOKED_DATES = ROOM_ID + BOOKED_DATE_TIMES + DATE_ID;
 
 
     @Autowired
@@ -39,8 +39,8 @@ public class RoomResource {
     }
 
     @GetMapping(value = ROOM_BOOKED_DATES)
-    public Date[] calculateStockPrediction(@PathVariable String roomId,
-                                           @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") Date date) {
-        return new Date[] {};
+    public List<Date> calculateStockPrediction(@PathVariable String roomId,
+                                               @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") Date date) {
+        return this.reservationController.searchBookedDateTimesByRoomAndDate(roomId, date);
     }
 }
