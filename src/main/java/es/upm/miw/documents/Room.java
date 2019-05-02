@@ -80,7 +80,7 @@ public class Room {
 
     @Override
     public String toString() {
-        return "Hotel{" +
+        return "Room{" +
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", price='" + price + '\'' +
