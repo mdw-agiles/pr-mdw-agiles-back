@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-class DateUtils {
+public class DateUtils {
 
     private static final ZoneId ZONE_ID = ZoneId.of("Europe/Madrid");
     private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd").withZone(ZONE_ID);
