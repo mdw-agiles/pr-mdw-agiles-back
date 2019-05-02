@@ -30,12 +30,17 @@ public class ReservationController {
     }
 
     public List<Date> searchBookedDateTimesByRoomAndDate(String roomId, Date date) {
-        Date startDate = DateUtils.startOfDayDate(date);
-        Date endDate = DateUtils.endOfDayDate(date);
-        List<Reservation> reservations = this.reservationRepository.findByRoomIdAndDateTimeBetween(roomId, startDate, endDate);
+        Date beforeStartOfDayDate = DateUtils.beforeStartOfDayDate(date);
+        Date afterEndOfDayDate = DateUtils.afterEndOfDayDate(date);
+        List<Reservation> reservations = this.reservationRepository.findByRoomIdAndDateTimeBetween(roomId, beforeStartOfDayDate, afterEndOfDayDate);
+        return buildBookedDatesByHours(reservations);
+    }
 
+    private List<Date> buildBookedDatesByHours(List<Reservation> reservations) {
         List<Date> bookedDates = new ArrayList<>();
-        //reservations.stream().map(reservation -> calculateBookedDateTimes(reservation)).collect(Collectors.toList());
+        reservations.stream().forEach(reservation -> {
+            bookedDates.addAll(DateUtils.datesByHour(reservation.getDateTime(), reservation.getDuration().longValue()));
+        });
         return bookedDates;
     }
 
@@ -45,6 +50,14 @@ public class ReservationController {
 
         private DateUtils() {
             //Avoid instances
+        }
+
+        public static Date convertToDate(LocalDateTime localDateTime) {
+            return Date.from(localDateTime.atZone(ZoneId.systemDefault()).toInstant());
+        }
+
+        public static LocalDateTime convertToLocalDateTime(Date date) {
+            return date.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
         }
 
         public static Date startOfDayDate(Date date) {
@@ -57,19 +70,30 @@ public class ReservationController {
             return parse(dateTime);
         }
 
-        private static Date parse(String dateTime) {
+        public static Date parse(String dateTime) {
             return Date.from(LocalDateTime.parse(dateTime).atZone(ZoneId.systemDefault()).toInstant());
         }
 
-        public static List<Date> datesByHour(Date date, int hours) {
+        public static List<Date> datesByHour(Date date, long hours) {
             List<Date> dates = new ArrayList<>();
-            LocalDateTime localDateTime = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
+            LocalDateTime localDateTime = DateUtils.convertToLocalDateTime(date);
             for (int i = 0; i < hours; i++) {
                 LocalDateTime localDateTimePlusHours = localDateTime.plusHours(i);
-                dates.add(Date.from(localDateTimePlusHours.atZone(ZoneId.systemDefault()).toInstant()));
+                dates.add(DateUtils.convertToDate(localDateTimePlusHours));
             }
-
             return dates;
+        }
+
+        public static Date beforeStartOfDayDate(Date date) {
+            return DateUtils.convertToDate(
+                    DateUtils.convertToLocalDateTime(
+                            DateUtils.startOfDayDate(date)).minusSeconds(1));
+        }
+
+        public static Date afterEndOfDayDate(Date date) {
+            return DateUtils.convertToDate(
+                    DateUtils.convertToLocalDateTime(
+                            DateUtils.endOfDayDate(date)).plusSeconds(1));
         }
     }
 }
