@@ -71,4 +71,14 @@ public class ReservationRepositoryIT {
         assertThat(reservations, is(not(empty())));
         assertThat(reservations.size(), is(2));
     }
+
+    @Test
+    void givenRoomId_thenReturnReservations() {
+        String roomId = "5cbc2adec2e17403fb397c6b";
+        List<Reservation> reservations = this.reservationRepository.findByRoomId(roomId);
+
+        assertNotNull(reservations);
+        assertThat(reservations, is(not(empty())));
+        assertThat(reservations.size(), is(3));
+    }
 }

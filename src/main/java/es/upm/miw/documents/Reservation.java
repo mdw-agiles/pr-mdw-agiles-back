@@ -6,10 +6,13 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
 import java.util.Objects;
+
+import static es.upm.miw.business_controllers.DateUtils.dateAfterDuration;
 
 @Document
 public class Reservation {
@@ -38,13 +41,13 @@ public class Reservation {
         // Empty for framework
     }
 
-    public Reservation(@NotNull String code, BigDecimal cost, Hotel hotel, Room room, BigDecimal duration, String dateTime) {
-        this.code = code;
+    public Reservation(BigDecimal cost, Hotel hotel, Room room, BigDecimal duration, Date dateTime) {
+        this.code = "RSV" + LocalDateTime.now().toString();
         this.cost = cost;
         this.hotel = hotel;
         this.room = room;
         this.duration = duration;
-        this.dateTime = Date.from(LocalDateTime.parse(dateTime).atZone(ZoneId.systemDefault()).toInstant());
+        this.dateTime = dateTime;
     }
 
     public String getId() { return id; }
@@ -73,6 +76,8 @@ public class Reservation {
 
     public Date getDateTime() { return dateTime; }
 
+    public Date getEndDateTime() { return dateAfterDuration (dateTime, duration); }
+
     public void setDateTime(Date dateTime) { this.dateTime = dateTime; }
 
     @Override
@@ -93,10 +98,11 @@ public class Reservation {
         return "Reservation{" +
                 "id='" + id + '\'' +
                 ", code='" + code + '\'' +
-                ", cost='" + cost + '\'' +
-                ", hotel=" + hotel.getName() +
-                ", duration='" + duration + '\'' +
-                ", dateTime='" + dateTime + '\'' +
+                ", cost=" + cost +
+                ", hotel=" + hotel +
+                ", room=" + room +
+                ", duration=" + duration +
+                ", dateTime=" + dateTime +
                 '}';
     }
 }
