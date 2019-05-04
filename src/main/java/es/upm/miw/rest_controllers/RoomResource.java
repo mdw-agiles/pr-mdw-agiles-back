@@ -39,8 +39,8 @@ public class RoomResource {
     }
 
     @GetMapping(value = ROOM_BOOKED_DATES)
-    public List<Date> calculateStockPrediction(@PathVariable String roomId,
-                                               @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") Date date) {
+    public List<Date> searchBookedDateTimesByRoomAndDate(@PathVariable String roomId,
+                                                         @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") Date date) {
         return this.reservationController.searchBookedDateTimesByRoomAndDate(roomId, date);
     }
 }

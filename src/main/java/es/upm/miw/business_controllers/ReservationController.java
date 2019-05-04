@@ -3,8 +3,10 @@ package es.upm.miw.business_controllers;
 import es.upm.miw.documents.Reservation;
 import es.upm.miw.documents.Room;
 import es.upm.miw.dtos.ReservationDto;
+import es.upm.miw.exceptions.NotFoundException;
 import es.upm.miw.exceptions.BadRequestException;
 import es.upm.miw.repositories.ReservationRepository;
+import es.upm.miw.repositories.RoomRepository;
 import es.upm.miw.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,6 +23,8 @@ public class ReservationController {
 
     @Autowired
     private ReservationRepository reservationRepository;
+    @Autowired
+    private RoomRepository roomRepository;
 
     @Autowired
     private UserRepository userRepository;
@@ -36,6 +40,8 @@ public class ReservationController {
     }
 
     public List<Date> searchBookedDateTimesByRoomAndDate(String roomId, Date date) {
+        Room room = roomRepository.findById(roomId)
+                .orElseThrow(() -> new NotFoundException("Room id (" + roomId + ")"));
         Date beforeStartOfDayDate = beforeStartOfDayDate(date);
         Date afterEndOfDayDate = afterEndOfDayDate(date);
         List<Reservation> reservations = this.reservationRepository.findByRoomIdAndDateTimeBetween(roomId, beforeStartOfDayDate, afterEndOfDayDate);
