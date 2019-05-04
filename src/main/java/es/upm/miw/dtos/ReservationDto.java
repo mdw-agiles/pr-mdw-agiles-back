@@ -9,7 +9,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -36,7 +35,7 @@ public class ReservationDto {
     @NotNull
     private BigDecimal duration;
 
-    private LocalDateTime dateTime;
+    private Date dateTime;
 
     public ReservationDto() {
         // Empty for framework
@@ -74,9 +73,9 @@ public class ReservationDto {
 
     public void setDuration(BigDecimal duration) { this.duration = duration; }
 
-    public LocalDateTime getDateTime() { return dateTime; }
+    public Date getDateTime() { return dateTime; }
 
-    public void setDateTime(LocalDateTime dateTime) { this.dateTime = dateTime; }
+    public void setDateTime(Date dateTime) { this.dateTime = dateTime; }
 
     @Override
     public boolean equals(Object o) {
