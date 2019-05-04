@@ -11,6 +11,8 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
 import java.util.Objects;
+import java.util.Random;
+import java.util.stream.Collectors;
 
 import static es.upm.miw.business_controllers.DateUtils.dateAfterDuration;
 
@@ -42,7 +44,7 @@ public class Reservation {
     }
 
     public Reservation(BigDecimal cost, Hotel hotel, Room room, BigDecimal duration, Date dateTime) {
-        this.code = "RSV" + LocalDateTime.now().toString();
+        this.code = generateRandomCode();
         this.cost = cost;
         this.hotel = hotel;
         this.room = room;
@@ -104,5 +106,15 @@ public class Reservation {
                 ", duration=" + duration +
                 ", dateTime=" + dateTime +
                 '}';
+    }
+
+    private String generateRandomCode(){
+        int length = 12;
+        String chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                + "abcdefghijklmnopqrstuvwxyz"
+                + "0123456789";
+        return new Random().ints(length, 0, chars.length())
+                .mapToObj(i -> "" + chars.charAt(i))
+                .collect(Collectors.joining());
     }
 }
