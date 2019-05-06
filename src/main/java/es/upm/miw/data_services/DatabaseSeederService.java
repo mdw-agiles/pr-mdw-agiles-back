@@ -1,6 +1,7 @@
 package es.upm.miw.data_services;
 
-import es.upm.miw.documents.*;
+import es.upm.miw.documents.Role;
+import es.upm.miw.documents.User;
 import es.upm.miw.repositories.*;
 import org.apache.logging.log4j.LogManager;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,6 +41,12 @@ public class DatabaseSeederService {
     private UserRepository userRepository;
     @Autowired
     private HotelChainRepository hotelChainRepository;
+    @Autowired
+    private HotelRepository hotelRepository;
+    @Autowired
+    private RoomRepository roomRepository;
+    @Autowired
+    private ReservationRepository reservationRepository;
 
     @PostConstruct
     public void constructor() {
@@ -64,7 +71,10 @@ public class DatabaseSeederService {
         LogManager.getLogger(this.getClass()).warn("------- Delete All -----------");
         // Delete Repositories -----------------------------------------------------
         this.userRepository.deleteAll();
+        this.hotelRepository.deleteAll();
         this.hotelChainRepository.deleteAll();
+        this.roomRepository.deleteAll();
+        this.reservationRepository.deleteAll();
 
         // -------------------------------------------------------------------------
         this.initialize();
@@ -96,6 +106,9 @@ public class DatabaseSeederService {
         // Save Repositories -----------------------------------------------------
         this.userRepository.saveAll(tpvGraph.getUserList());
         this.hotelChainRepository.saveAll(tpvGraph.getHotelChainList());
+        this.hotelRepository.saveAll(tpvGraph.getHotelList());
+        this.roomRepository.saveAll(tpvGraph.getRoomList());
+        this.reservationRepository.saveAll(tpvGraph.getReservationList());
         // -----------------------------------------------------------------------
 
         LogManager.getLogger(this.getClass()).warn("------- Seed...   " + "-----------");

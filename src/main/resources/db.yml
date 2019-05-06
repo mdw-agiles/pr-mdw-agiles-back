@@ -3,67 +3,147 @@
 # Users
 # mobiles: 666666000 a 666666666 RESERVADOS AQUI
 userList:
-  - &us0
-    mobile: 666666000
-    username: u000
-    password: p000
-    email: u000@gmail.com
-    dni: null
-    address: C/ TPV, 0, 1A, 28000 Madrid
-    roles:
-      - ADMIN
-      - MANAGER
-      - OPERATOR
-  - mobile: 666666001
-    username: u001
-    password: p001
-    email: u001@gmail.com
-    dni: 66666600L
-    address: C/ TPV, 1, 1A, 28000 Madrid
-    roles:
-      - MANAGER
-  - mobile: 666666002
-    username: u002
-    password: p002
-    email: u005@gmail.com
-    dni: 66666605R
-    address: C/ TPV, 5, 1A, 28000 Madrid
-    roles:
-      - OPERATOR
-  - mobile: 666666003
-    username: u003
-    password: p003
-    dni: 66666603E
-    address: C/ TPV, 3, 1A, 28000 Madrid
-    roles:
-      - OPERATOR
-  - &us4
-    mobile: 666666004
-    username: u004
-    password: p004
-    email: u004@gmail.com
-    dni: 66666604T
-    address: C/ TPV, 4, 1A, 28000 Madrid
-    roles:
-      - CUSTOMER
-  - &us5
-    mobile: 666666005
-    username: u005
-    password: p005
-    email: u005@gmail.com
-    dni: 66666605R
-    address: C/ TPV, 5, 1A, 28000 Madrid
-    roles:
-      - CUSTOMER
+- &us0
+  mobile: 666666000
+  username: u000
+  password: p000
+  email: u000@gmail.com
+  dni: null
+  address: C/ TPV 0 1A 28000 Madrid
+  roles:
+  - ADMIN
+  - MANAGER
+  - OPERATOR
+- mobile: 666666001
+  username: u001
+  password: p001
+  email: u001@gmail.com
+  dni: 66666600L
+  address: C/ TPV 1 1A 28000 Madrid
+  roles:
+  - MANAGER
+- mobile: 666666002
+  username: u002
+  password: p002
+  email: u005@gmail.com
+  dni: 66666605R
+  address: C/ TPV 5 1A 28000 Madrid
+  roles:
+  - OPERATOR
+- mobile: 666666003
+  username: u003
+  password: p003
+  dni: 66666603E
+  address: C/ TPV 3 1A 28000 Madrid
+  roles:
+  - OPERATOR
+- &us4
+  mobile: 666666004
+  username: u004
+  password: p004
+  email: u004@gmail.com
+  dni: 66666604T
+  address: C/ TPV 4 1A 28000 Madrid
+  roles:
+  - CUSTOMER
+- &us5
+  mobile: 666666005
+  username: u005
+  password: p005
+  email: u005@gmail.com
+  dni: 66666605R
+  address: C/ TPV 5 1A 28000 Madrid
+  roles:
+  - CUSTOMER
+
 # HotelChain
 hotelChainList:
-  - &hc0
-    name: "NH Hoteles"
-  - &hc1
-    name: "Barceló Hotel Group"
-  - &hc2
-    name: "Meliá Hotels"
-  - &hc3
-    name: "AC Hotels"
+- &hc-5cbc210bc2e17403fb397c27
+  id: 5cbc210bc2e17403fb397c27
+  name: NH Hoteles
+- &hc-5cbc2d6ec2e17403fb397c7d
+  id: 5cbc2d6ec2e17403fb397c7d
+  name: Grupo Meliá
 
+# Hotel
+hotelList:
+  - &h-5cbc2a3fc2e17403fb397c5b
+    id: 5cbc2a3fc2e17403fb397c5b
+    name: NH Madrid Centro
+    hotelChain: *hc-5cbc210bc2e17403fb397c27
+  - &h-5cbc2d9fc2e17403fb397c81
+    id: 5cbc2d9fc2e17403fb397c81
+    name: NH Alcobendas
+    hotelChain: *hc-5cbc210bc2e17403fb397c27
+  - &h-5cbc2dafc2e17403fb397c85
+    id: 5cbc2dafc2e17403fb397c85
+    name: NH Alcalá de Henares
+    hotelChain: *hc-5cbc210bc2e17403fb397c27
+  - &h-5cbc2dd5c2e17403fb397c89
+    id: 5cbc2dd5c2e17403fb397c89
+    name: Meliá Málaga
+    hotelChain: *hc-5cbc2d6ec2e17403fb397c7d
+# Room
+roomList:
+  - &r-5cbc2adec2e17403fb397c6b
+    id: 5cbc2adec2e17403fb397c6b
+    name: Normal 2 personas
+    price: 10
+    hotel: *h-5cbc2a3fc2e17403fb397c5b
+  - &r-5cbc2e0ec2e17403fb397c8a
+    id: 5cbc2e0ec2e17403fb397c8a
+    name: Presidencial 2 personas
+    price: 12.5
+    hotel: *h-5cbc2a3fc2e17403fb397c5b
+  - &r-5cbc2e23c2e17403fb397c8b
+    id: 5cbc2e23c2e17403fb397c8b
+    name: Normal 2 personas Desayuno
+    price: 13.5
+    hotel: *h-5cbc2a3fc2e17403fb397c5b
+  - &r-5cbc2e23c2e17403fb397c8c
+    id: 5cbc2e23c2e17403fb397c8c
+    name: Familiar
+    price: 21
+    hotel: *h-5cbc2d9fc2e17403fb397c81
+  - &r-5cbc2e23c2e17403fb397c8d
+    id: 5cbc2e23c2e17403fb397c8d
+    name: Deluxe
+    price: 33
+    hotel: *h-5cbc2d9fc2e17403fb397c81
+  - &r-5cbc2e23c2e17403fb397c8e
+    id: 5cbc2e23c2e17403fb397c8e
+    name: Suite
+    price: 28
+    hotel: *h-5cbc2d9fc2e17403fb397c81
+  - &r-5cbc2e23c2e17403fb397c8f
+    id: 5cbc2e23c2e17403fb397c8f
+    name: Boquete
+    price: 2
+    hotel: *h-5cbc2dd5c2e17403fb397c89
 
+# Reservation
+reservationList:
+  - &b-5cbc2b7bc2e17403fb397c73
+    id: 5cbc2b7bc2e17403fb397c73
+    code: 1a2b3c4d5e6f7g8h
+    cost: 5.0
+    hotel: *h-5cbc2a3fc2e17403fb397c5b
+    room: *r-5cbc2adec2e17403fb397c6b
+    duration: 2
+    dateTime: 2019-04-21T00:00:00+02:00
+  - &b-5cbc2e95c2e17403fb397c8f
+    id: 5cbc2e95c2e17403fb397c8f
+    code: 8a7b6c5d4e3f2g1h
+    cost: 2.5
+    hotel: *h-5cbc2a3fc2e17403fb397c5b
+    room: *r-5cbc2adec2e17403fb397c6b
+    duration: 1
+    dateTime: 2019-04-21T23:00:00+02:00
+  - &b-5cbc2e95c2e17403fb397c9f
+    id: 5cbc2e95c2e17403fb397c9f
+    code: 8a7b6c5d4e3f2g1h
+    cost: 2.5
+    hotel: *h-5cbc2a3fc2e17403fb397c5b
+    room: *r-5cbc2adec2e17403fb397c6b
+    duration: 10
+    dateTime: 2020-04-21T10:00:00+02:00

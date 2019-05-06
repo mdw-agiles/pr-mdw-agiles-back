@@ -1,27 +1,31 @@
 package es.upm.miw.documents;
 
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
 @Document
-public class HotelChain {
+public class Hotel {
 
     @Id
     private String id;
 
-    @Indexed(unique = true)
+    @NotNull
     private String name;
 
-    public HotelChain(){
+    @DBRef
+    private HotelChain hotelChain;
+
+    public Hotel() {
         // Empty for framework
     }
 
-    public HotelChain(String name) {
-        this();
+    public Hotel(@NotNull String name, HotelChain hotelChain) {
         this.name = name;
+        this.hotelChain = hotelChain;
     }
 
     public String getId() {
@@ -40,24 +44,37 @@ public class HotelChain {
         this.name = name;
     }
 
+    public HotelChain getHotelChain() {
+        return hotelChain;
+    }
+
+    public void setHotelChain(HotelChain hotelChain) {
+        this.hotelChain = hotelChain;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof HotelChain)) return false;
-        HotelChain that = (HotelChain) o;
-        return getName().equals(that.getName());
+
+        if (!(o instanceof Hotel)) return false;
+        Hotel hotel = (Hotel) o;
+        return Objects.equals(name, hotel.name) &&
+                Objects.equals(hotelChain.getId(), hotel.hotelChain.getId());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getName());
+        return Objects.hash(name, hotelChain.getId());
     }
 
     @Override
     public String toString() {
-        return "HotelChain{" +
+        return "Hotel{" +
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
+                ", hotelChain=" + hotelChain +
                 '}';
     }
 }
+
+
