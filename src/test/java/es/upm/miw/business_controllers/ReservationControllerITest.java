@@ -40,7 +40,7 @@ public class ReservationControllerITest {
         List<Date> dates = reservationController.searchBookedDateTimesByRoomAndDate(roomId, date);
         assertNotNull(dates);
         assertThat(dates, is(not(empty())));
-        assertThat(dates.size(), is(3));
+        assertThat(dates.size(), is(7));
     }
 
     @Test
