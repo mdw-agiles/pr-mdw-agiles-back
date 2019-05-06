@@ -60,7 +60,7 @@ public class RoomResourceIT {
                 .expand("2019-04-21")
                 .get().build());
         assertThat(bookedDates, is(not(empty())));
-        assertThat(bookedDates.size(), is(3));
+        assertThat(bookedDates.size(), is(7));
     }
 
     @Test
