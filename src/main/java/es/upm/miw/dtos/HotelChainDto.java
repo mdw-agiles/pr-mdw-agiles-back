@@ -6,10 +6,17 @@ import javax.validation.constraints.NotNull;
 public class HotelChainDto {
 
     @NotNull
+    private String id;
+
+    @NotNull
     private String name;
 
     public HotelChainDto() {
         // Empty for framework
+    }
+
+    public String getId() {
+        return id;
     }
 
     public String getName() {
@@ -19,7 +26,8 @@ public class HotelChainDto {
     @Override
     public String toString() {
         return "HotelChainDto{" +
-                "name='" + name + '\'' +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
                 '}';
     }
 }

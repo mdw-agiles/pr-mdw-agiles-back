@@ -11,6 +11,8 @@ import java.util.List;
 public interface ReservationRepository extends MongoRepository<Reservation, String> {
     List<Reservation> findAllByCode(String code);
 
+    List<Reservation> findByRoomId(String RoomId);
+
     List<Reservation> findByRoomIdAndDateTimeBetween(String roomId, Date startDate, Date endDate);
 
     // NOT WORK throw java.lang.IllegalArgumentException: invalid hexadecimal representation of an ObjectId: [_param_0]

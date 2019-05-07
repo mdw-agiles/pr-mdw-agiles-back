@@ -1,5 +1,6 @@
 package es.upm.miw.business_controllers;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
@@ -58,5 +59,16 @@ public class DateUtils {
         return DateUtils.convertToDate(
                 DateUtils.convertToLocalDateTime(
                         DateUtils.endOfDayDate(date)).plusSeconds(1));
+    }
+
+    public static Date dateAfterDuration (Date date, BigDecimal duration){
+
+        int hours = (int) duration.doubleValue();
+        int minutes = (int) (duration.doubleValue() * 60) % 60;
+
+        LocalDateTime localDateTime = DateUtils.convertToLocalDateTime(date);
+        LocalDateTime localDateTimePlusDuration = localDateTime.plusHours(hours).plusMinutes(minutes);
+
+        return DateUtils.convertToDate(localDateTimePlusDuration);
     }
 }

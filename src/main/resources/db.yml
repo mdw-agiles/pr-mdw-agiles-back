@@ -59,8 +59,10 @@ userList:
 # HotelChain
 hotelChainList:
 - &hc-5cbc210bc2e17403fb397c27
+  id: 5cbc210bc2e17403fb397c27
   name: NH Hoteles
 - &hc-5cbc2d6ec2e17403fb397c7d
+  id: 5cbc2d6ec2e17403fb397c7d
   name: Grupo Meliá
 
 # Hotel
@@ -113,6 +115,12 @@ roomList:
     name: Suite
     price: 28
     hotel: *h-5cbc2d9fc2e17403fb397c81
+  - &r-5cbc2e23c2e17403fb397c8f
+    id: 5cbc2e23c2e17403fb397c8f
+    name: Boquete
+    price: 2
+    hotel: *h-5cbc2dd5c2e17403fb397c89
+
 # Reservation
 reservationList:
   - &b-5cbc2b7bc2e17403fb397c73
@@ -130,4 +138,12 @@ reservationList:
     hotel: *h-5cbc2a3fc2e17403fb397c5b
     room: *r-5cbc2adec2e17403fb397c6b
     duration: 1
-    dateTime: 2019-04-21T23:00:00+02:00
+    dateTime: 2019-04-21T20:00:00+02:00
+  - &b-5cbc2e95c2e17403fb397c9f
+    id: 5cbc2e95c2e17403fb397c9f
+    code: 8a7b6c5d4e3f2g1h
+    cost: 2.5
+    hotel: *h-5cbc2a3fc2e17403fb397c5b
+    room: *r-5cbc2adec2e17403fb397c6b
+    duration: 10
+    dateTime: 2020-04-21T10:00:00+02:00

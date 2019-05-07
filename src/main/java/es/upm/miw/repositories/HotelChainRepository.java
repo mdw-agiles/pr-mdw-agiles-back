@@ -9,6 +9,6 @@ import java.util.List;
 
 public interface HotelChainRepository extends MongoRepository<HotelChain, String> {
 
-    @Query(value = "{}", fields = "{ '_id' : 0, 'name' : 1}")
+    @Query(value = "{}", fields = "{ '_id' : 1, 'name' : 1}")
     List<HotelChainDto> findAllHotelChains();
 }

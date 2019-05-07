@@ -2,10 +2,11 @@ package es.upm.miw.documents;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Objects;
 
-
+@Document
 public class HotelChain {
 
     @Id
@@ -25,6 +26,10 @@ public class HotelChain {
 
     public String getId() {
         return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getName() {

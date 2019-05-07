@@ -9,6 +9,9 @@ import java.util.List;
 public class HotelDto {
 
     @NotNull
+    public String id;
+
+    @NotNull
     public String name;
 
     @NotNull
@@ -22,9 +25,18 @@ public class HotelDto {
     }
 
     public HotelDto(Hotel hotel) {
+        this.id = hotel.getId();
         this.name = hotel.getName();
         this.hotelChainId = hotel.getHotelChain().getId();
         this.hotelChainName = hotel.getHotelChain().getName();
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -51,7 +63,7 @@ public class HotelDto {
         this.hotelChainName = hotelChainName;
     }
 
-    public static List<HotelDto> getListHotelDto(List<Hotel> hotelList){
+    public static List<HotelDto> getListHotelDto(List<Hotel> hotelList) {
         List<HotelDto> hotelDtoList = new ArrayList<>();
         hotelList.forEach(hotel -> hotelDtoList.add(new HotelDto(hotel)));
         return hotelDtoList;
@@ -60,7 +72,8 @@ public class HotelDto {
     @Override
     public String toString() {
         return "HotelDto{" +
-                "name='" + name + '\'' +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
                 ", hotelChainId='" + hotelChainId + '\'' +
                 ", hotelChainName='" + hotelChainName + '\'' +
                 '}';

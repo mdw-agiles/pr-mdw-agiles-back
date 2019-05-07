@@ -20,7 +20,6 @@ public class ReservationDto {
     @Id
     private String id;
 
-    @NotNull
     private String code;
 
     @NotNull
@@ -45,6 +44,7 @@ public class ReservationDto {
         this.code = reservation.getCode();
         this.cost = reservation.getCost();
         this.hotel = reservation.getHotel();
+        this.room = reservation.getRoom();
         this.duration = reservation.getDuration();
         this.dateTime = reservation.getDateTime();
     }
