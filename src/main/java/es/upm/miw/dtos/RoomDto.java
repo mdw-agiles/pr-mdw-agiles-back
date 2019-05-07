@@ -2,6 +2,7 @@ package es.upm.miw.dtos;
 
 import es.upm.miw.documents.Hotel;
 import es.upm.miw.documents.Room;
+import org.springframework.data.annotation.Id;
 
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
@@ -10,6 +11,9 @@ import java.util.List;
 import java.util.Objects;
 
 public class RoomDto {
+
+    @Id
+    private String id;
 
     @NotNull
     private String name;
@@ -25,6 +29,7 @@ public class RoomDto {
     }
 
     public RoomDto(Room room) {
+        this.id = room.getId();
         this.name = room.getName();
         this.price = room.getPrice();
         this.hotel = room.getHotel();
@@ -49,6 +54,10 @@ public class RoomDto {
     public Hotel getHotel() {
         return hotel;
     }
+
+    public String getId() { return id; }
+
+    public void setId(String id) { this.id = id; }
 
     public void setHotel(Hotel hotel) {
         this.hotel = hotel;
@@ -75,7 +84,8 @@ public class RoomDto {
 
     @Override
     public String toString() {
-        return "Hotel{" +
+        return "Room{" +
+                "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", price='" + price + '\'' +
                 ", hotel=" + hotel.getName() +
