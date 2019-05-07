@@ -37,8 +37,6 @@ public class RoomResourceIT {
                 .param("hotelName", "Hotel Name")
                 .get().build());
         assertTrue(roomDtoList.isEmpty());
-
-
     }
 
     @Test
